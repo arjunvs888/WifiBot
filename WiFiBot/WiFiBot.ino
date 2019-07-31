@@ -1,11 +1,9 @@
 #define BLYNK_PRINT Serial
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
-char auth[] = "G3Q_u-s0oGy98u-56YQCotxltNSjNZDz";
-char ssid[] = "DeadSec_Dev1";
-char pass[] = "##5823#36257##";
-int high;
-int low = 0;
+char auth[] = "token";
+char ssid[] = "your ssid";
+char pass[] = "yourpassword";
 #define ENB D3 //ENB
 #define MB1 D4 //IN3
 #define MB2 D5 //IN4 
@@ -26,52 +24,52 @@ void setup() {
   Blynk.begin(auth, ssid, pass);
 }
 BLYNK_WRITE(V6) {
-  high = param.asInt();
-  Serial.println(high);
+  HIGH = param.asInt();
+  Serial.println(HIGH);
 }
 BLYNK_WRITE(V1) {
   digitalWrite(ENA, HIGH);
   digitalWrite(ENB, HIGH);
-  digitalWrite(MA1, high);
-  digitalWrite(MA2, low);
-  digitalWrite(MB1, high);
-  digitalWrite(MB2, low);
+  digitalWrite(MA1, HIGH);
+  digitalWrite(MA2, LOW);
+  digitalWrite(MB1, HIGH);
+  digitalWrite(MB2, LOW);
   Serial.println("Forward");
 }
 BLYNK_WRITE(V2) {
   digitalWrite(ENA, HIGH);
   digitalWrite(ENB, HIGH);
-  digitalWrite(MA1, high);
-  digitalWrite(MA2, low);
-  digitalWrite(MB1, low);
-  digitalWrite(MB2, high);
+  digitalWrite(MA1, HIGH);
+  digitalWrite(MA2, LOW);
+  digitalWrite(MB1, LOW);
+  digitalWrite(MB2, HIGH);
   Serial.println("Right");
 }
 BLYNK_WRITE(V3) {
   digitalWrite(ENA, HIGH);
   digitalWrite(ENB, HIGH);
-  digitalWrite(MA1, low);
-  digitalWrite(MA2, high);
-  digitalWrite(MB1, low);
-  digitalWrite(MB2, high);
+  digitalWrite(MA1, LOW);
+  digitalWrite(MA2, HIGH);
+  digitalWrite(MB1, LOW);
+  digitalWrite(MB2, HIGH);
   Serial.println("Backward");
 }
 BLYNK_WRITE(V4) {
   digitalWrite(ENA, HIGH);
   digitalWrite(ENB, HIGH);
-  digitalWrite(MA1, low);
-  digitalWrite(MA2, high);
-  digitalWrite(MB1, high);
-  digitalWrite(MB2, low);
+  digitalWrite(MA1, LOW);
+  digitalWrite(MA2, HIGH);
+  digitalWrite(MB1, HIGH);
+  digitalWrite(MB2, LOW);
   Serial.println("Left");
 }
 BLYNK_WRITE(V5) {
   digitalWrite(ENA, LOW);
   digitalWrite(ENB, LOW);
-  digitalWrite(MA1, low);
-  digitalWrite(MA2, low);
-  digitalWrite(MB1, low);
-  digitalWrite(MB2, low);
+  digitalWrite(MA1, LOW);
+  digitalWrite(MA2, LOW);
+  digitalWrite(MB1, LOW);
+  digitalWrite(MB2, LOW);
   Serial.println("STOP");
 }
 
